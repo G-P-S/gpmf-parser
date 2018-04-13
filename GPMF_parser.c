@@ -623,7 +623,7 @@ GPMF_ERR GPMF_DeviceName(GPMF_stream *ms, char *devicenamebuf, uint32_t devicena
 {
 	if (ms && devicenamebuf)
 	{
-		uint32_t len = strlen(ms->device_name);
+		uint32_t len = (uint32_t) strlen(ms->device_name);
 		if (len >= devicename_buf_size)
 			return GPMF_ERROR_MEMORY;
 
@@ -711,7 +711,7 @@ uint32_t GPMF_ExpandComplexTYPE(char *src, uint32_t srcsize, char *dst, uint32_t
 		{
 			dst[k] = src[i];
 			if (dst[k] == 0) break;
-			i++, k++;
+			i++; k++;
 		}
 	}
 
