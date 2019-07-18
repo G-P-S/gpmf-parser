@@ -797,7 +797,7 @@ uint32_t GPMF_ExpandComplexTYPE(char *src, uint32_t srcsize, char *dst, uint32_t
 		{
 			dst[k] = src[i];
 			if (dst[k] == 0) break;
-			i++; k++;
+			i++, k++;
 		}
 	}
 
