@@ -77,6 +77,11 @@ typedef struct mp4object
 	uint32_t timeBaseFourCC;
 } mp4object;
 
+enum mp4flag
+{
+	MP4_FLAG_READ_WRITE_MODE = 1 << 0,
+};
+
 #define MAKEID(a,b,c,d)			(((d&0xff)<<24)|((c&0xff)<<16)|((b&0xff)<<8)|(a&0xff))
 #define STR2FOURCC(s)			((s[0]<<0)|(s[1]<<8)|(s[2]<<16)|(s[3]<<24))
 
@@ -106,8 +111,8 @@ typedef struct mp4object
 						( (((a>>8)&0xff)>='a'&&((a>>8)&0xff)<='z') || (((a>>8)&0xff)>='A'&&((a>>8)&0xff)<='Z') || (((a>>8)&0xff)>='0'&&((a>>8)&0xff)<='9') || (((a>>8)&0xff)==' ') ) && \
 						( (((a>>0)&0xff)>='a'&&((a>>0)&0xff)<='z') || (((a>>0)&0xff)>='A'&&((a>>0)&0xff)<='Z') || (((a>>0)&0xff)>='0'&&((a>>0)&0xff)<='9') || (((a>>0)&0xff)==' ') )) 
 
-size_t OpenMP4Source(char *filename, uint32_t traktype, uint32_t subtype);
-size_t OpenMP4SourceUDTA(char *filename);
+size_t OpenMP4Source(char *filename, uint32_t traktype, uint32_t subtype, int32_t flags);
+size_t OpenMP4SourceUDTA(char *filename, int32_t flags);
 void CloseSource(size_t handle);
 float GetDuration(size_t handle);
 uint32_t GetVideoFrameRateAndCount(size_t handle, uint32_t *numer, uint32_t *demon);
