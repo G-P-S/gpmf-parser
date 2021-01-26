@@ -481,7 +481,7 @@ size_t OpenMP4Source(char *filename, uint32_t traktype, uint32_t traksubtype)  /
 									free(mp4->metasizes);
 									mp4->metasizes = 0;
 								}
-								if(num > 0 && qtsize > (num * 4))
+								if(num > 0)
 								{
 									mp4->metasize_count = num;
 									mp4->metasizes = (uint32_t *)malloc(num * 4);
